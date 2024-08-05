@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Website Tugas Pweb</title>
+    <style>
+        /* Gaya dasar untuk body halaman */
+        body {
+            font-family: Arial, sans-serif; /* Font yang digunakan */
+            background-color: #f4f4f4; /* Warna latar belakang halaman */
+            margin: 0; /* Menghapus margin default */
+            padding: 0; /* Menghapus padding default */
+        }
+
+        /* Gaya untuk navbar */
+        nav {
+            background-color: #333; /* Warna latar belakang navbar */
+            color: #fff; /* Warna teks navbar */
+            padding: 10px 20px; /* Jarak di sekitar teks navbar */
+            position: sticky; /* Navbar tetap di atas saat scroll */
+            top: 0; /* Posisi navbar di bagian atas halaman */
+            width: 100%; /* Lebar navbar 100% dari layar */
+        }
+
+        /* Gaya untuk daftar menu navbar */
+        nav ul {
+            list-style: none; /* Menghapus bullet points dari list */
+            padding: 0; /* Menghapus padding default */
+            margin: 0; /* Menghapus margin default */
+            display: flex; /* Menampilkan item daftar secara horizontal */
+            justify-content: center; /* Menyusun item daftar di tengah */
+        }
+
+        /* Gaya untuk item menu navbar */
+        nav ul li {
+            margin: 0 15px; /* Jarak horizontal antara item */
+        }
+
+        /* Gaya untuk link di navbar */
+        nav ul li a {
+            color: #fff; /* Warna teks link */
+            text-decoration: none; /* Menghapus garis bawah pada link */
+            font-size: 16px; /* Ukuran font link */
+        }
+
+        /* Gaya saat hover pada link navbar */
+        nav ul li a:hover {
+            text-decoration: underline; /* Menambahkan garis bawah saat hover */
+        }
+
+        /* Gaya untuk setiap bagian konten */
+        .container {
+            max-width: 900px; /* Lebar maksimum konten */
+            margin: 20px auto; /* Margin atas dan bawah, serta pusatkan secara horizontal */
+            background: #fff; /* Warna latar belakang konten */
+            padding: 20px; /* Jarak di sekitar konten */
+            border-radius: 8px; /* Sudut yang membulat */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Bayangan konten */
+            display: none; /* Sembunyikan bagian secara default */
+        }
+
+        /* Gaya untuk bagian yang aktif (ditampilkan) */
+        .container.active {
+            display: block; /* Tampilkan bagian jika aktif */
+        }
+
+        /* Gaya untuk judul utama */
+        h1 {
+            text-align: center; /* Tengah-kan teks */
+            color: #333; /* Warna teks */
+        }
+
+        /* Gaya untuk profil mahasiswa */
+        .profile {
+            display: flex; /* Menampilkan foto dan info secara horizontal */
+            align-items: center; /* Pusatkan item secara vertikal */
+            border-bottom: 2px solid #eee; /* Garis bawah */
+            padding-bottom: 20px; /* Jarak di bawah profil */
+            margin-bottom: 20px; /* Margin bawah */
+        }
+
+        /* Gaya untuk foto profil */
+        .profile img {
+            border-radius: 50%; /* Membuat foto bulat */
+            margin-right: 20px; /* Jarak ke kanan foto */
+            width: 150px; /* Lebar foto */
+            height: 150px; /* Tinggi foto */
+            object-fit: cover; /* Mengisi foto dengan proporsional */
+        }
+
+        /* Gaya untuk nama di profil */
+        .profile h2 {
+            margin: 0; /* Menghapus margin default */
+            color: #333; /* Warna teks */
+        }
+
+        /* Gaya untuk informasi biodata */
+        .info {
+            line-height: 1.6; /* Jarak antar baris */
+        }
+
+        .info dt {
+            font-weight: bold; /* Menebalkan teks label */
+            margin-top: 10px; /* Jarak atas untuk label */
+        }
+
+        .info dd {
+            margin: 0; /* Menghapus margin default */
+            margin-bottom: 10px; /* Jarak bawah untuk detail */
+        }
+
+        /* Gaya untuk bagian tambahan seperti riwayat pendidikan dan pengalaman kerja */
+        .section {
+            margin-top: 20px; /* Margin atas */
+        }
+
+        .section h3 {
+            background: #f7f7f7; /* Warna latar belakang untuk judul section */
+            padding: 10px; /* Jarak di sekitar teks */
+            border-radius: 6px; /* Sudut membulat */
+            border: 1px solid #ddd; /* Garis border */
+            color: #333; /* Warna teks */
+        }
+
+        .section ul {
+            list-style-type: none; /* Menghapus bullet points */
+            padding: 0; /* Menghapus padding */
+        }
+
+        .section ul li {
+            padding: 8px 0; /* Jarak vertikal antara item */
+            border-bottom: 1px solid #eee; /* Garis bawah antara item */
+        }
+
+        /* Gaya untuk informasi kontak */
+        .contact-info {
+            background-color: #f7f7f7; /* Warna latar belakang */
+            padding: 15px; /* Jarak di sekitar teks */
+            border-radius: 8px; /* Sudut membulat */
+        }
+
+        .contact-info h3 {
+            margin-top: 0; /* Menghapus margin atas untuk judul */
+        }
+
+        .contact-info p {
+            margin: 5px 0; /* Jarak vertikal antara paragraf */
+        }
+
+        /* Gaya untuk formulir */
+        .form-section form {
+            margin-top: 20px; /* Margin atas */
+        }
+
+        .form-section label {
+            display: block; /* Menampilkan label dalam satu baris */
+            margin-top: 10px; /* Jarak atas */
+        }
+
+        .form-section input, .form-section textarea {
+            width: 100%; /* Lebar 100% dari elemen induk */
+            padding: 10px; /* Jarak di sekitar teks input */
+            margin-top: 5px; /* Jarak atas */
+            border: 1px solid #ddd; /* Garis border */
+            border-radius: 4px; /* Sudut membulat */
+        }
+
+        .form-section button {
+            margin-top: 10px; /* Jarak atas */
+            padding: 10px 20px; /* Jarak di sekitar teks tombol */
+            border: none; /* Menghapus border default tombol */
+            background-color: #333; /* Warna latar belakang tombol */
+            color: #fff; /* Warna teks tombol */
+            border-radius: 4px; /* Sudut membulat */
+            cursor: pointer; /* Menampilkan pointer saat hover */
+        }
+
+        .form-section button:hover {
+            background-color: #555; /* Warna latar belakang tombol saat hover */
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="#" onclick="showSection('home')">Home</a></li>
+            <li><a href="#" onclick="showSection('biodata')">Biodata</a></li>
+            <li><a href="#" onclick="showSection('about')">About</a></li>
+            <li><a href="#" onclick="showSection('form')">Form</a></li>
+        </ul>
+    </nav>
+
+    <!-- Bagian Home -->
+    <div class="container" id="home">
+        <h1>Home</h1>
+        <p>Selamat datang di Website Saya</p>
+    </div>
+
+    <!-- Bagian Biodata -->
+    <div class="container" id="biodata">
+        <h1>Biodata Mahasiswa</h1>
+        <div class="profile">
+            <img src="https://via.placeholder.com/150" alt="Foto Mahasiswa">
+            <div>
+                <h2>Aditya Gautama</h2>
+                <p>Program Studi Informatika</p>
+                <p>Fakultas Teknologi Industri</p>
+            </div>
+        </div>
+        <dl class="info">
+            <dt>NIM:</dt>
+            <dd>2300018387</dd>
+            <dt>Tempat, Tanggal Lahir:</dt>
+            <dd>Dharmasraya, 31 Desember 2003</dd>
+            <dt>Alamat:</dt>
+            <dd>Jl. Ringroad Selatan, Tamanan, Banguntapan</dd>
+            <dt>Email:</dt>
+            <dd>2300018387@webmail.uad.ac.id</dd>
+            <dt>Instagram</dt>
+            <dd>@gtmaditya</dd>
+        </dl>
+        <div class="section">
+            <h3>Riwayat Pendidikan</h3>
+            <ul>
+                <li>SMAN 1 Koto Baru</li>
+                <li>Universitas Ahmad Dahlan, Fakultas Teknologi Industri, Prodi Informatika</li>
+            </ul>
+        </div>
+       
+        <div class="contact-info">
+            <h3>Informasi Kontak</h3>
+            <p>Untuk informasi lebih lanjut atau pertanyaan, silakan hubungi saya melalui email atau instagram yang tertera di atas.</p>
+        </div>
+    </div>
+
+    <!-- Bagian About -->
+    <div class="container" id="about">
+        <h1>About</h1>
+        <p>Ini adalah website pertama saya. Didalam website ini berisi biodata saya, informasi kontak saya, dan juga form untuk menginput nama, email, dan pesan</p>
+    </div>
+
+    <!-- Bagian Form -->
+<div class="container form-section" id="form">
+    <h1>Form</h1>
+    <form action="simpan.php" method="post">
+        <label for="name">Nama:</label>
+        <input type="text" id="name" name="name" required>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+
+        <label for="message">Pesan:</label>
+        <textarea id="message" name="message" rows="4" required></textarea>
+
+        <button type="submit">Kirim</button>
+    </form>
+</div>
+
+
+    <!-- Script JavaScript untuk mengontrol tampilan section -->
+    <script>
+        function showSection(sectionId) {
+            // Sembunyikan semua section
+            var sections = document.querySelectorAll('.container');
+            sections.forEach(function(section) {
+                section.classList.remove('active');
+            });
+
+            // Tampilkan section yang dipilih
+            var activeSection = document.getElementById(sectionId);
+            if (activeSection) {
+                activeSection.classList.add('active');
+            }
+        }
+
+        // Tampilkan section home secara default saat halaman pertama kali dimuat
+        showSection('home');
+    </script>
+</body>
+</html>
